@@ -1,4 +1,4 @@
-package icia.kotlin.spring;
+package icia.kotlin.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

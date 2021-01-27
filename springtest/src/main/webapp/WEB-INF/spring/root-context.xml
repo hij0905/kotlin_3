@@ -30,6 +30,6 @@
 		<property name="dataSource" ref="data"></property>
 	</bean>
 	
-	<mybatis-spring:scan base-package="icia.kotlin.spring" /> 
+	<mybatis-spring:scan base-package="icia.kotlin.mapper" /> 
 	
 </beans>
