@@ -18,7 +18,7 @@
 ${mId }
 ${mPwd }
 <br>
-memberInfo :: 
+memberInfo 
 ${mId2 }
 ${mPwd2 }
 

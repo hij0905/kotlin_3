@@ -7,10 +7,13 @@
 	<title>Home</title>
 </head>
 <body>
+${testWell }
 <h1>
 	Hello world!  
 </h1>
-Test 0128.4시51분
+
 <P>  The time on the server is ${serverTime}. </P>
+
+<a href="http://172.30.1.24/LoginForm"> 새로운 페이지 이동</a>
 </body>
 </html>
