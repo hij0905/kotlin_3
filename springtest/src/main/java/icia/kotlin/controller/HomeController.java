@@ -43,15 +43,11 @@ public class HomeController {
 		return mav;
 	}
 	@RequestMapping(value="/Login", method = {RequestMethod.POST})
-	public ModelAndView login(@ModelAttribute Member member) {
-		ModelAndView mav = new ModelAndView();
+	public ModelAndView login(@ModelAttribute Member m) {
+		ModelAndView mav = null;
 		
-		mav.addObject("mId", member.getMId());
-		mav.addObject("mPwd", member.getMPwd());
-		
-		auth.entrance();
-		
-		mav.setViewName("loginForm");
+		m.setServiceCode("A");
+		mav = auth.entrance(m);
 		return mav; 
 	}
 	//@RequestParam("memberInfo") String[] mInfo
