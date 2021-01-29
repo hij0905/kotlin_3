@@ -13,8 +13,8 @@
 
 	${mId }<br />
 	${mPw }
-	${memberId }<br />
-	${memberPw }<br />
+<%-- 	${memberId }<br /> --%>
+<%-- 	${memberPw }<br /> --%>
 </body>
 <script>
 function moveLoginForm(){
