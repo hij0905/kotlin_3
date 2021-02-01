@@ -24,5 +24,4 @@
 	<context:component-scan base-package="icia.kotlin.controller" />
 	<context:component-scan base-package="icia.kotlin.services" />
 	
-	
 </beans:beans>

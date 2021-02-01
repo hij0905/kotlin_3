@@ -15,11 +15,10 @@
 	<!-- DB연결 정보 -->
 	<bean id="connectInfo" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@106.243.194.230:7003:xe" />
-		<property name="username" value="SAMJO" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@106.243.194.230:7005:xe" />
+		<property name="username" value="JINJU_DEV" />
 		<property name="password" value="1234" />
 	</bean>
-	
 	<!-- DBCP 정보 -->
 	<bean id="data" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="connectInfo" />
