@@ -2,6 +2,9 @@ package icia.kotlin.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.servlet.ModelAndView;
 
 import icia.kotlin.beans.Member;
@@ -13,6 +16,8 @@ public class Authentication {
 
    @Autowired
    private MapperInterface mapper;
+   @Autowired
+   private PlatformTransactionManager tran;
    
    public Authentication() {}
    
@@ -32,11 +37,23 @@ public class Authentication {
       
       ModelAndView mav = new ModelAndView();
       
-      if(this.isMember(m)) {
-         if(this.isAccess(m)) {
-            System.out.println("로그인 성공!");
-            mav.addObject("member", this.getMemberInfo(m));
-         }
+      TransactionStatus status = tran.getTransaction(new DefaultTransactionDefinition());
+      
+     
+      
+      try {
+	      if(this.isMember(m)) {
+	         if(this.isAccess(m)) {
+	            System.out.println("로그인 성공!");
+	            mav.addObject("member", this.getMemberInfo(m));
+	            
+	            tran.commit(status);
+	         }
+	         
+	      }
+	      
+      }catch(Exception e) {
+    	  tran.rollback(status);
       }
       //mav.addObject("mId", m.getMId());
       //mav.addObject("mPwd", m.getMPw());
@@ -44,7 +61,10 @@ public class Authentication {
       
       return mav;
    }
-
+   /*@Transactional 단 모든 메서드를 public으로 바꿔야 한다
+   (SPRING FRAMEWORK에서의 TRANSACTION 1번)
+   */
+   
    private boolean convertToBoolean(int value) {
       return value==1? true: false;
    }
@@ -63,4 +83,6 @@ public class Authentication {
    private Member getMemberInfo(Member member) {
       return mapper.getMemberInfo(member);
    }
+   
+
 }

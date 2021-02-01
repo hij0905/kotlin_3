@@ -19,7 +19,7 @@
 function moveLoginForm(){
 	var mId = document.getElementsByName("mId")[0];
 	var mPw = document.getElementsByName("mPw")[0];
-	//var date = document.getElementsByName("date")[0];
+	
 	
 	var form = document.createElement("form");
 	form.action= "Login?serviceCode=A";
@@ -27,7 +27,6 @@ function moveLoginForm(){
 	
 	form.appendChild(mId);
 	form.appendChild(mPw);
-	//form.appendChild(date);
 	document.body.appendChild(form);
 	
 	form.submit();

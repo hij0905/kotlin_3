@@ -7,11 +7,9 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	${welcome}   
-</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+
 <a href="http://192.168.123.100/LoginForm" >로그인폼 이동</a>
+<p>	Now Time : ${Access }</p>
 </body>
 </html>
