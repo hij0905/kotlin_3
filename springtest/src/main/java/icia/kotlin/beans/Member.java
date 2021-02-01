@@ -5,10 +5,12 @@ import lombok.Data;
 @Data //롬북을 사용하기 위해선 반드시 적을 것+임포트
 public class Member {
 	
-	private String serviceCode;
+	private String ServiceCode;
 	private String mId;
 	private String mPw;
-
+	private String mPhone;
+	private String mName;
+	
 
 
 }
