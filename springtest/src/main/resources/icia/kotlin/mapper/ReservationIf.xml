@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="icia.kotlin.mapper.ReservationIf">
+	<select id="getMovieList" resultType="icia.kotlin.beans.Movie">
+		SELECT MV_CODE AS MVCODE, MV_NAME AS MVNAME, MV_GRADE AS MVGRADE, MV_STATUS AS MVSTATUS,
+		MV_IMAGE AS MVIMAGE, MV_COMMENTS AS MVCOMMENTS FROM MV WHERE MV_STATUS != 'C'
+	</select>
+</mapper>

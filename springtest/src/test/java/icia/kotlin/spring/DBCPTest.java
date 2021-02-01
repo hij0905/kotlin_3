@@ -24,10 +24,13 @@ public class DBCPTest {
 	//@Setter(onMethod_ = {@Autowired})
 	@Setter(onMethod_ = {@Autowired})
 	private DataSource data;
+	
 	@Setter(onMethod_ = {@Autowired})
 	private SqlSessionFactory sqlSession;
+	
 	@Setter(onMethod_ = {@Autowired})
 	private MapperInterface mapper;
+	
 	@Test
 	public void connectTest() {
 		try{
@@ -35,8 +38,8 @@ public class DBCPTest {
 			Connection connect = data.getConnection();
 			log.info(session);
 			log.info(connect);
-			log.info(mapper.getDate());
-			log.info(mapper.getDate2());
+			//log.info(mapper.getDate());
+			//log.info(mapper.getDate2());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
