@@ -4,14 +4,20 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Home</title>
+   <title>Home</title>
+   <link rel="stylesheet" href="/resources/css/movie.css">
 </head>
 <body>
-
-응?
-<a href="http://172.30.1.24/LoginForm">로그인폼 이동</a>
-<p> Now Time : ${Access } </p>
-
-
+   <P> Now Time : ${Access}   </P>
+   <a href="http://172.30.1.8/LoginForm">로그인폼 이동</a>
+	
+	
+   ${mList }
 </body>
+
+<script>
+function step2(mvCode) {
+	location.href = "/Step2?mvCode="+mvCode;
+}
+</script>
 </html>

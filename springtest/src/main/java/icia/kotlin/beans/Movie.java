@@ -11,4 +11,5 @@ public class Movie {
 	private String mvStatus;
 	private String mvImage;
 	private String mvComments;
+	private String mDate;
 }
