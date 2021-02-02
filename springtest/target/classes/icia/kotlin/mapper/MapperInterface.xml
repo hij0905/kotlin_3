@@ -17,4 +17,13 @@
 	<select id= "getMemberInfo" resultType="icia.kotlin.beans.Member">
 		SELECT ST_ID AS "mId", ST_NAME AS "mName", ST_PHONE AS "mPhone" FROM ST WHERE ST_ID =#{mId}
 	</select>
+	
+	<insert id="insCustomer">
+		INSERT INTO ST(ST_ID,ST_NAME,ST_PASSWORD,ST_PHONE) VALUES(#{mId}, #{mName}, #{mPwd}, #{mPhone})
+	</insert>
+	
+	<insert id="insMovie">
+	INSERT INTO MV(MV_CODE, MV_NAME, MV_GRADE, MV_STATUS, MV_IMAGE, MV_COMMENTS) VALUES(#{mvCode}, #{mvName}, #{mvGrade}, #{mvStatus}, #{mvImage}, #{mvComments})
+	</insert>
+	
 </mapper>
