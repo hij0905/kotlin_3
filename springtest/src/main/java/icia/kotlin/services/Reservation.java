@@ -33,25 +33,50 @@ public class Reservation {
 			mav = this.movieListCtl(movie);
 		}else {
 			//mav = this.movieSelectDateCtl(movie);
-			mav = this.screeningDate(movie);
+			switch(movie.getSCode()) {
+			case "Step2":
+				mav = this.screeningDate(movie);
+				break;
+			case "Step3":
+				mav = this.screeningTime(movie);
+				break;
+			}
 		}
 		return mav;
 	}
 
-   
-/* Screening Date*/
-private ModelAndView screeningDate(Movie movie) {
-	ModelAndView mav = new ModelAndView();
-		/*Start Date*/
-		mav.addObject("Access", this.getCurrentDate('d'));
-		
-		/* Movie Info & Convert to JSON*/
-		String jsonData = gson.toJson(this.getMovieList(movie));
-		mav.addObject("movieData", jsonData);
-		/* View*/
-		mav.setViewName("step2");
-	return mav;
+	/* Screening Time*/
+	private ModelAndView screeningTime(Movie movie) {
+		ModelAndView mav = new ModelAndView();
+			/*Start Date*/
+			mav.addObject("Access", this.getCurrentDate('d'));
+			
+			/* Movie Info & Convert to JSON*/
+			String jsonData = gson.toJson(this.getScreening(movie));
+			System.out.println(jsonData);
+			
+			mav.addObject("ScreeningData", jsonData);
+		return mav;
+		}  
+	
+	private ArrayList<Movie> getScreening(Movie movie) {
+
+		return mapper.getScreening(movie);
 	}
+	
+	/* Screening Date*/
+	private ModelAndView screeningDate(Movie movie) {
+		ModelAndView mav = new ModelAndView();
+			/*Start Date*/
+			mav.addObject("Access", this.getCurrentDate('d'));
+			
+			/* Movie Info & Convert to JSON*/
+			String jsonData = gson.toJson(this.getMovieList(movie));
+			mav.addObject("movieData", jsonData);
+			/* View*/
+			mav.setViewName("step2");
+		return mav;
+		}
 
 
 

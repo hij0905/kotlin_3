@@ -11,6 +11,12 @@
 		<if test="mvCode != null">
 		<![CDATA[ AND MV_CODE = #{mvCode} ]]>
 		</if>
-		
+	</select>
+	
+	<select id="getScreening" resultType="icia.kotlin.beans.Movie">
+	<![CDATA[
+		SELECT * FROM SCREENING
+		WHERE MVCODE=#{mvCode} AND TO_CHAR(MVDATE, 'YYYY-MM-DD') = #{mvDate}
+		]]>
 	</select>
 </mapper>

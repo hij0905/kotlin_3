@@ -77,7 +77,9 @@ function divClick(mvCode, mvDate){
 	let request = new XMLHttpRequest();
 	request.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
-			console.log("서버 갔다 옴");
+			let jsonData = decodeURIComponent(request.response);
+				alert(jsonData);
+			//console.log("서버 갔다 옴");
 		}
 	};
 	request.open("POST", "Step3?sCode=Step3&"+"mvCode="+mvCode+"&mvDate="+mvDate, true);
