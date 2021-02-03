@@ -53,10 +53,9 @@ public class Reservation {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("Access", this.getCurrentDate('d'));
 		String jsonData = gson.toJson(this.getScreening(movie));
-		System.out.println("여기까지..");
-		System.out.println(jsonData);
+		// System.out.println(jsonData);
 		mav.addObject("ScreeningData", jsonData);
-		mav.setViewName("step2");
+		//mav.setViewName("step2");
 		
 		return mav;
 	}

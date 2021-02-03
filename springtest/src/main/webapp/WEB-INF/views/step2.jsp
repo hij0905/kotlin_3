@@ -39,8 +39,6 @@ function init(){
 		dateList.appendChild(dateDiv);
 	}
 	
-	
-	
 	let movieInfo = document.getElementById("movieInfo");
 	/* Append movieInfo Div */
 	let movie = JSON.parse('${movieData}');
@@ -79,7 +77,8 @@ function divClick(mvCode, mvDate){
 	let request = new XMLHttpRequest();
 	 request.onreadystatechange = function(){
 		    if(this.readyState == 4 && this.status == 200){
-		       alert("서버감");
+		    	let jsonData = decodeURIComponent(request.response);
+		       alert(jsonData);
 		    }
 		 };
 	 request.open("POST", "/Step3?sCode=Step3&mvCode="+mvCode+"&mvDate="+mvDate,true);
