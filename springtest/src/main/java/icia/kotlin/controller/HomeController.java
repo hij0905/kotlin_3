@@ -42,18 +42,27 @@ public class HomeController {
 		return auth.entrance(m); 
 	}
 	
-	@RequestMapping(value="/Step2", method = {RequestMethod.GET})
-	public ModelAndView step2(@ModelAttribute Movie movie) {
+	@RequestMapping(value="/Step1", method = {RequestMethod.GET})
+	public ModelAndView step1(@ModelAttribute Movie movie) {
 		mav = rv.entrance(movie);
 		return mav; 
 	}
 	
-	@RequestMapping(value="/Step3", method = {RequestMethod.GET})
-	public ModelAndView step3(@ModelAttribute Movie movie) {
-		System.out.println("/Step3 넘어온 데이터 mvCode :: " + movie.getMvCode() + "   mDate:: " + movie.getMDate());
+	@RequestMapping(value="/Step2", method = {RequestMethod.GET})
+	public ModelAndView step2(@ModelAttribute Movie movie) {
+		System.out.println("/Step2 넘어온 데이터 mvCode :: " + movie.getMvCode() + "   mDate:: " + movie.getMvDate());
 		mav.setViewName("movieTestPage");
 		return mav; 
 	}
+	
+	@RequestMapping(value="/Step3", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView step3(@ModelAttribute Movie movie) {
+		System.out.println(movie.getMvCode());
+		System.out.println(movie.getMvDate());
+		mav = rv.entrance(movie);
+		return mav; 
+	}
+	
 	
 	
 	

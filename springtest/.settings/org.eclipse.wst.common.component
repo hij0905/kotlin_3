@@ -23,7 +23,7 @@
         
         
         <property name="java-output-path" value="target/classes"/>
-        <property name="context-root" value="spring10"/>
+        <property name="context-root" value="spring"/>
                         	
     
     
