@@ -9,5 +9,5 @@ public class Member {
 	private String mPwd;
 	private String mName;
 	private String mPhone;
-	private String servicecode;
+	private String sCode;
 }

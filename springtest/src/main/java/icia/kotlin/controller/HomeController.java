@@ -42,10 +42,23 @@ public class HomeController {
 	@RequestMapping(value = "/Login", method = {RequestMethod.POST})
 	public ModelAndView logIn(@ModelAttribute Member m) {
 		ModelAndView mav = null;
-		//m.setServicecode("A");
-		//mav = auth.entrance(m);
 		return auth.entrance(m);
 	}
 	
+	@RequestMapping(value = "/Step2", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView step2(@ModelAttribute Movie movie) {
+		mav = reservation.entrance(movie);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/Step3", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView step3(@ModelAttribute Movie movie) {
+		System.out.println(movie.getSCode());
+		System.out.println(movie.getMvCode());
+		System.out.println(movie.getMvDate());
+		//mav.setViewName("movieTestPage");
+		return null;
+	}
 	
 }

@@ -19,12 +19,13 @@ public class Authentication {
 	private MapperInterface mapper;
 	@Autowired
 	private PlatformTransactionManager tran;
+	
 	public Authentication() {}
 	
 	public ModelAndView entrance(Member m) {
 		ModelAndView mav = null;
 		
-		switch(m.getServicecode()) {
+		switch(m.getSCode()) {
 		case "A":
 			mav = this.loginCtl(m);
 			break;
