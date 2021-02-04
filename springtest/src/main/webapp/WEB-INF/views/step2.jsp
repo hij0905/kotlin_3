@@ -132,7 +132,14 @@ function screening() {
 
 function selectInfo(index) {
 	var form = document.createElement("form");
-	let formData = "sCode=Step4&mvCode="+ screeningData[index].mvCode +"&mvTime="+screeningData[index].mvTime +"&mvGrade="+screeningData[index].mvGrade+"&screen="+screeningData[index].screen;
+	// alert("mvTime="+screeningData[index].mvTime.replace(/-/g, "").replace(/:/g, "").replace(" ",""));
+	let date = screeningData[index].mvTime.split(" ");
+	date = date[0].replace(/-/g, "").replace("+","").replace(/:/g, "");
+	//alert("mvDateTime="+date+screeningData[index].time);
+	
+	let formData = "sCode=Step4&mvCode="+ screeningData[index].mvCode +"&mvDateTime="+ date+screeningData[index].time +"&mvGrade="+screeningData[index].mvGrade+"&screen="+screeningData[index].screen;
+	
+	
 	form.action = "Step4?" + formData; 
 	form.method = "post";
 	document.body.appendChild(form);
