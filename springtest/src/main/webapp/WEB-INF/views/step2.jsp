@@ -90,9 +90,10 @@ function divClick(mvCode, mvDate){
 }
 //screeningData[index].mvTime
 function tScreenClick(index){
-	let dateTime = screeningData[index].mvDate.substring(0, 10).replace(/-/g,"");
+	let dateTime = screeningData[index].mvDate.substring(0, 10).replace(/-/g,""); // g를 붙여야 모두 replace 실행됨!
+	//let dateTime = screeningData[index].mvDate.replace(/:/g,"").replace(/-/g,"").replace("+","");
 	let formData = "sCode=Step4&mvCode="+ screeningData[index].mvCode + 
-	"&mvThCode=4&mvDateTime="+ dateTime + screeningData[index].mvTime
+	"&mvThCode=1&mvDateTime="+ dateTime + screeningData[index].mvTime
 	+ "&mvScreen="+ screeningData[index].mvScreen ;
 	let form = document.createElement("form");
 	form.action = "Step4?" + formData;
@@ -103,7 +104,6 @@ function tScreenClick(index){
 
 function screening(){
 	let sTime = document.getElementById("selectionTime");
-	
 	
 	for (index=0; index< screeningData.length; index++) {
 		let i = index;
