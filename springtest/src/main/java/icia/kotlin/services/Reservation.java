@@ -40,8 +40,26 @@ public class Reservation {
 			case "Step3":
 				mav = this.screeningTime(movie);
 				break;
+			case "Step4":
+				mav = this.selectSeat(movie);
+				break;
 			}
 		}
+		return mav;
+	}
+
+	private ModelAndView selectSeat(Movie movie) {
+		ModelAndView mav = new ModelAndView();
+		
+		System.out.println(movie.getSCode());
+		System.out.println(movie.getMvCode());
+		System.out.println(movie.getMvThCode());
+		System.out.println(movie.getMvScreen());
+		System.out.println(movie.getMvDateTime());
+		
+		mav.addObject("Access", this.getCurrentDate('f'));
+		mav.setViewName("step4");
+		
 		return mav;
 	}
 

@@ -12,7 +12,12 @@ public class Movie {
 	private String mvImage;
 	private String mvComments;
 	private String mvDate;
-	
-	private String mvTime;
+
+	private String mvTime; 
+	private String mvDateTime; /* Step4를 위해 추가*/
 	private String mvScreen;
+	private String mvThCode; /* Step4를 위해 추가*/
+	
+	
+	
 }

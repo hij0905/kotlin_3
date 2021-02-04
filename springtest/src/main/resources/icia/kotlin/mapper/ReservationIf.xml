@@ -17,6 +17,7 @@
 	<![CDATA[
 		SELECT * FROM SCREENING
 		WHERE MVCODE=#{mvCode} AND TO_CHAR(MVDATE, 'YYYY-MM-DD') = #{mvDate}
+		ORDER BY MVSCREEN ASC
 		]]>
 	</select>
 </mapper>

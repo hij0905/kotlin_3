@@ -60,12 +60,19 @@ public class HomeController {
 	@ResponseBody
 	public String step3(@ModelAttribute Movie movie) throws UnsupportedEncodingException {
 		mav = reservation.entrance(movie);
-		System.out.println(movie.getSCode());
-		System.out.println(movie.getMvCode());
-		System.out.println(movie.getMvDate());
+		//System.out.println(movie.getSCode());
+		//System.out.println(movie.getMvCode());
+		//System.out.println(movie.getMvDate());
 		//mav.setViewName("movieTestPage");
 		System.out.println(mav.getModel().get("ScreeningData"));
 		return URLEncoder.encode(mav.getModel().get("ScreeningData").toString(),"UTF-8");
+	}
+	
+	@RequestMapping(value = "/Step4", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView step4(@ModelAttribute Movie movie) {
+		mav = reservation.entrance(movie);
+		
+		return mav;
 	}
 	
 }
