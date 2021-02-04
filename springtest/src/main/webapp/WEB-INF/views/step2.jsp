@@ -15,13 +15,20 @@
 		<div id="movieInfo"></div>
 		<div id="selectionDate">selectionDate</div>
 		<div id="selectionTime">selectionTime</div>
+		<div id="selectionGrade">selectionGrade</div>
+		<div id="selectionScreen">selectionScreen</div>
 	</section>
 </body>
 <script>
+
+let screeningData;
+
 function init(){
 	/* Convert Date */
 	let dateList = document.getElementById("selectionDate");
 	let dayStr = "${Access}";
+	
+	
 	let day = dayStr.split("-");
 	//let now = new Date();
 	//now.setFullYear(parseInt(day[0]), parseInt(day[1])-1, parseInt(day[2]));
@@ -78,12 +85,60 @@ function divClick(mvCode, mvDate){
 	 request.onreadystatechange = function(){
 		    if(this.readyState == 4 && this.status == 200){
 		    	let jsonData = decodeURIComponent(request.response);
-		       alert(jsonData);
+		    	screeningData = JSON.parse(jsonData);
+		       screening();
 		    }
 		 };
-	 request.open("POST", "/Step3?sCode=Step3&mvCode="+mvCode+"&mvDate="+mvDate,true);
-	 request.send();
+	 request.open("POST", "Step3", true);
+	 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
+	 request.send("sCode=Step3&mvCode="+mvCode+"&mvDate="+mvDate);
 }
+
+function screening() {
+	let selectionTime = document.getElementById("selectionTime");
+	let selectionInfo = document.getElementById("selectionInfo");
+	let selectionGrade = document.getElementById("selectionGrade");
+	let selectionScreen = document.getElementById("selectionScreen");
+	
+	//mvCode, mvName, mvGrade, myTime, screen (여기서 띄워야할건 mvTime, screen, mvGrade ());
+	// 전체 (W) ,12세 (T) 15세 (F) 청불 (A)
+	alert(screeningData.length);
+	for(index = 0; index < screeningData.length; index++){
+		let i = index;
+		let mvTime = document.createElement('Div');              
+		mvTime.textContent = screeningData[index].time;
+		mvTime.style.cursor = "pointer";
+		// 이걸 펑션에 바로 인식이안됌.. 아래는 나중에 수정.
+		selectionTime.appendChild(mvTime);
+		mvTime.addEventListener('click', function(){selectInfo(i);});
+		let mvGrade = document.createElement('Div');
+		var grade;
+		switch (screeningData[index].mvGrade){
+			case "W" : grade = "전체이용가";  break;
+			case "T" : grade = "12세";  break;
+			case "F" : grade = "15세"; 	break;
+			case "A" : grade = "성인";  break;
+			default :  grade = "db 확인"; break;
+		}
+
+		mvGrade.textContent = grade;
+		selectionGrade.appendChild(mvGrade);
+	
+		let myScreen = document.createElement('Div');
+		myScreen.textContent = screeningData[index].screen + "관";
+		selectionScreen.appendChild(myScreen);
+	}
+}
+
+function selectInfo(index) {
+	var form = document.createElement("form");
+	let formData = "sCode=Step4&mvCode="+ screeningData[index].mvCode +"&mvTime="+screeningData[index].mvTime +"&mvGrade="+screeningData[index].mvGrade+"&screen="+screeningData[index].screen;
+	form.action = "Step4?" + formData; 
+	form.method = "post";
+	document.body.appendChild(form);
+	form.submit();
+}
+	
 	
 </script>
 </html>

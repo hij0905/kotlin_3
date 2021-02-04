@@ -23,52 +23,61 @@ public class Reservation {
 	private PlatformTransactionManager tran;
 	@Autowired
 	private Gson gson;
-	
+
 	public ModelAndView entrance(Movie movie) {
 		ModelAndView mav = null;
 		if (movie.getMvCode() == null) {
 			mav = this.movieListCtl(movie);
 		} else {
-			mav = this.screeningDate(movie);
 			switch (movie.getSCode()) {
-			case "Step2":
-
+			case "Step1":
+				mav = this.screeningDate(movie);
 				break;
-
 			case "Step3":
-				System.out.println("step3 실행");
 				mav = this.screeningTime(movie);
 				break;
+			case "Step4":
+				System.out.println("step4 실행");
+				mav = this.SelectSeat(movie);
+				break;
 			}
-
-			
-			//
-			
 		}
 		return mav;
+	}
 
+	private ModelAndView SelectSeat(Movie movie) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("Access", this.getCurrentDate('f'));
+		System.out.print(movie.getMvCode() + "  ");
+		System.out.print(movie.getMvTime() + "  ");
+		System.out.print(movie.getMvGrade() + "  ");
+		System.out.print(movie.getScreen() + "  ");
+
+		mav.setViewName("step4");
+		return mav;
 	}
 
 	private ModelAndView screeningTime(Movie movie) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("Access", this.getCurrentDate('d'));
+
+		System.out.println("this.getScreening(movie):: " + this.getScreening(movie));
 		String jsonData = gson.toJson(this.getScreening(movie));
 		// System.out.println(jsonData);
 		mav.addObject("ScreeningData", jsonData);
-		//mav.setViewName("step2");
-		
+		// mav.setViewName("step2");
+
 		return mav;
 	}
-	
+
 	private ArrayList<Movie> getScreening(Movie movie) {
 		return mapper.getScreening(movie);
 	}
 
-
 	private ModelAndView screeningDate(Movie movie) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("Access", this.getCurrentDate('d'));
-		// Movie info & Convert to json 
+		// Movie info & Convert to json
 		String jsonData = gson.toJson(this.getMovieList(movie));
 		mav.addObject("movieData", jsonData);
 		// mav.addObject("selectMovie", this.movieSelectDate(movie));
@@ -77,11 +86,9 @@ public class Reservation {
 		return mav;
 	}
 
-	
-	
-	//private Movie movieSelectDate(Movie movie) {
-		//return mapper.movieSelectDate(movie);
-	//}
+	// private Movie movieSelectDate(Movie movie) {
+	// return mapper.movieSelectDate(movie);
+	// }
 
 	private ModelAndView movieListCtl(Movie movie) {
 		ModelAndView mav = new ModelAndView();
