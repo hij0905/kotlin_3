@@ -12,8 +12,8 @@
 	<P>  Now Time : ${Access} </P>
 	<section id="movieZone" style="display:flex;">
 		<div id="movieInfo"></div>
-		<div id="selectionDate"><h2>Screening Date</</h2></div> <br>
-		<div id="selectionTime">selectionTime</div>
+		<div id="selectionDate"><h2>Screening Date</h2></div> <br>
+		<div id="selectionTime"><h2>Selection Time</h2></div>
 	</section>
 </body>
 <script>
@@ -78,24 +78,67 @@ function divClick(mvCode, mvDate){
 	request.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
 			let jsonData = decodeURIComponent(request.response);
-				alert(jsonData);
+				screening(jsonData);
 			//console.log("서버 갔다 옴");
 		}
 	};
-	request.open("POST", "Step3?sCode=Step3&"+"mvCode="+mvCode+"&mvDate="+mvDate, true);
-	request.send();
-	
-	
-	//서버전송
-// 	let form = document.createElement("form");
-// 	//form.action = "Step2?sCode=Step2&mvCode=" + mvCode;
-// 	form.action = "Step2?mvCode=" + mvCode;
-// 	//location.href = "/Step2?mvCode="+mvCode +"&mDate="+mvDate;
-// 	form.method = "post"
-	
-// 	document.body.appendChild(form);
-// 	form.submit();
+	request.open("POST", "Step3", true)
+	request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+	request.send("sCode=Step3&mvCode="+mvCode+"&mvDate="+mvDate);
 }
+
+
+function screening(jsonData){
+	alert(jsonData);
 	
+	let time = document.getElementById("selectionTime");
+	let screening = JSON.parse(jsonData);
+	
+	
+	
+	
+	for (i=0; i< screening.length; i++) {
+			var sc = screening[i].mvScreen
+			
+
+			/* mvScreen */
+			let mvScreen = document.createElement('Div');
+			mvScreen.textContent = screening[i].mvScreen + "관";
+			mvScreen.style.cursor = "pointer";
+			time.appendChild(mvScreen);
+
+			/* mvTime */
+			let mvTime = document.createElement('Div');
+			var sctime = screening[i].mvTime
+			mvTime.textContent = "시간 = " + sctime.substring(0, 2) + ":"
+					+ sctime.substring(2);
+			mvTime.style.cursor = "pointer";
+			//mvTime.addEventListener('click', function(){divClick(screening[i].mvCode, this.textContent);});//onClick 역할
+			time.appendChild(mvTime);
+
+			/* mvGrade */
+			let mvGrade = document.createElement('Div');
+
+			var gr = screening[i].mvGrade
+			switch (gr) {
+			case "W":
+				var grade = "전체 관람가";
+				break;
+			case "T":
+				var grade = "12세 관람가";
+				break;
+			case "F":
+				var grade = "15세 관람가";
+				break;
+			case "A":
+				var grade = "청소년 관람 불가";
+				break;
+			}
+			mvGrade.textContent = grade;
+			mvGrade.style.cursor = "pointer";
+			time.appendChild(mvGrade);
+
+		}
+	}
 </script>
 </html>
