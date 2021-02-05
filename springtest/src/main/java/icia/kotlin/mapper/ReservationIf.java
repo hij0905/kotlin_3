@@ -2,6 +2,7 @@ package icia.kotlin.mapper;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 
 import icia.kotlin.beans.Movie;
 
@@ -12,3 +13,12 @@ public interface ReservationIf {
 //	public Movie movieSelectDate(Movie movie);
 
 }
+=======
+import icia.kotlin.beans.Movie;
+
+
+public interface ReservationIf {
+	public ArrayList<Movie> getMovieList();
+}
+
+>>>>>>> refs/remotes/master/Hyeon
