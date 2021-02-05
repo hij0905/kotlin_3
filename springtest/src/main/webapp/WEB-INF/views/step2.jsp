@@ -92,7 +92,7 @@ function divClick(mvCode, mvDate){
 function tScreenClick(index){
 	let dateTime = screeningData[index].mvDate.substring(0, 10).replace(/-/g,"");
 	let formData = "sCode=Step4&mvCode="+ screeningData[index].mvCode + 
-	"&mvThCode=4&mvDateTime="+ dateTime + screeningData[index].mvTime
+	"&mvThCode=1&mvDateTime="+ dateTime + screeningData[index].mvTime
 	+ "&mvScreen="+ screeningData[index].mvScreen ;
 	let form = document.createElement("form");
 	form.action = "Step4?" + formData;
