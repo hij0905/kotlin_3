@@ -38,13 +38,13 @@ public class DBCPTest {
 			Connection connect = data.getConnection();
 			log.info(session);
 			log.info(connect);
-<<<<<<< HEAD
+
 			//log.info(mapper.getDate());
 			//log.info(mapper.getDate2());
-=======
+
 //			log.info(mapper.getDate());
 //			log.info(mapper.getDate2());
->>>>>>> refs/remotes/master/Hyeon
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

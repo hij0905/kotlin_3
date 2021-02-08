@@ -1,6 +1,6 @@
 package icia.kotlin.services;
 
-<<<<<<< HEAD
+
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +14,9 @@ import com.google.gson.Gson;
 
 import icia.kotlin.beans.Movie;
 import icia.kotlin.mapper.ReservationIf;
+
+
+
 
 @Service
 public class Reservation {
@@ -34,7 +37,7 @@ public class Reservation {
 			mav = this.movieListCtl(movie);
 		}else {
 			//mav = this.movieSelectDateCtl(movie);
-			switch(movie.getSCode()) {
+			switch(movie.getServiceCode()) {
 			case "Step2":
 				mav = this.screeningDate(movie);
 				break;
@@ -52,7 +55,7 @@ public class Reservation {
 	private ModelAndView selectSeat(Movie movie) {
 		ModelAndView mav = new ModelAndView();
 		
-		System.out.println(movie.getSCode());
+		System.out.println(movie.getServiceCode());
 		System.out.println(movie.getMvCode());
 		System.out.println(movie.getMvThCode());
 		System.out.println(movie.getMvScreen());
@@ -173,57 +176,11 @@ private ModelAndView movieListCtl(Movie movie) {
 		return sdf.format(date);		
 	}
 	
+
+
+
+
+
 	
-=======
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.web.servlet.ModelAndView;
-
-import icia.kotlin.beans.Movie;
-import icia.kotlin.mapper.ReservationIf;
-
-@Service
-public class Reservation {
-	   @Autowired
-	   private ReservationIf mapper;
-	   @Autowired
-	   private PlatformTransactionManager tran;
-	   
-	   
-	   
-	   public ModelAndView entrance(Movie movie) {
-	      ModelAndView mav = null;
-	      
-	      if(movie.getMvCode() == null) {
-	    	  mav = this.movieListCtl();
-	      }
-	      
-	      return mav;
-	   }
-
-
-
-	private ModelAndView movieListCtl() {
-		ModelAndView mav = new ModelAndView();
-		ArrayList<Movie> movieList = null;
-		/* AccessTime */
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Eø‰¿œ");
-		mav.addObject("Access", sdf.format(date));
-		
-		System.out.println(this.getMovieList().size());
-		
-		mav.setViewName("home");
-		return mav;
-	}
-	
-	private ArrayList<Movie> getMovieList(){
-		return mapper.getMovieList();
-	}
->>>>>>> refs/remotes/master/Hyeon
 }

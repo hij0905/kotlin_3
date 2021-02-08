@@ -21,17 +21,12 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-<<<<<<< HEAD
+
 	<!-- Gson -->
 	<beans:bean id="gson" class="com.google.gson.Gson"></beans:bean>
 	
 	<context:component-scan base-package="icia.kotlin.controller" />
 	<context:component-scan base-package="icia.kotlin.services" /> 
-=======
-	
-	<context:component-scan base-package="icia.kotlin.controller" />
-	<context:component-scan base-package="icia.kotlin.services" />
->>>>>>> refs/remotes/master/Hyeon
 	
 	
 	

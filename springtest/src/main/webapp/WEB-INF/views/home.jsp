@@ -8,16 +8,11 @@
 </head>
 <body>
 
-<<<<<<< HEAD
-	<a href="http://192.168.123.100/LoginForm" >로그인폼 이동</a><br />
-	<P>  Now Time : ${Access} </P>
-	<section id="movieZone"></section>
-	
-=======
+
 
 <a href="http://192.168.123.100/LoginForm" >로그인폼 이동</a>
 <p>	Now Time : ${Access }</p>
->>>>>>> refs/remotes/master/Hyeon
+
 </body>
 <script> 
 	let dayStr = "${Access}";

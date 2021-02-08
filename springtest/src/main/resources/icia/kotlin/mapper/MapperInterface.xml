@@ -7,7 +7,6 @@
 		SELECT COUNT(*) FROM ST WHERE ST_ID = #{mId}
 	</select>
 	<select id="isAccess" resultType="int">
-<<<<<<< HEAD
 		SELECT COUNT(*) FROM ST WHERE ST_ID = #{mId} AND ST_PASSWORD = #{mPwd}
 	</select>
 	<select id="getMemberInfo" resultType="icia.kotlin.beans.Member">
@@ -20,12 +19,5 @@
 		INSERT INTO MV(MV_CODE, MV_NAME, MV_GRADE, MV_STATUS, MV_IMAGE, MV_COMMENTS)
 		VALUES(#{mvCode},#{mvName},#{mvGrade},#{mvStatus},#{mvImage},#{mvComments})
 	</insert>
-=======
-		SELECT COUNT(*) FROM ST WHERE ST_ID = #{mId} AND ST_PASSWORD = #{mPw}
-	</select>
-	<select id="getMemberInfo" resultType="icia.kotlin.beans.Member">
-		SELECT ST_ID AS mId, ST_NAME AS mName, ST_PHONE AS mPhone FROM ST WHERE ST_ID = #{mId} AND ST_PASSWORD = #{mPw}
-	</select>
-	
->>>>>>> refs/remotes/master/Hyeon
+
 </mapper>
