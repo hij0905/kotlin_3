@@ -10,8 +10,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import icia.kotlin.beans.Movie;
+import icia.kotlin.beans.Seat;
 import icia.kotlin.mapper.ReservationIf;
 
 @Service
@@ -47,21 +49,24 @@ public class Reservation {
 		}
 		return mav;
 	}
-
+	
+/* Select Seat*/
 	private ModelAndView selectSeat(Movie movie) {
 		ModelAndView mav = new ModelAndView();
-		
-		System.out.println(movie.getSCode());
-		System.out.println(movie.getMvCode());
-		System.out.println(movie.getMvThCode());
-		System.out.println(movie.getMvScreen());
-		System.out.println(movie.getMvDateTime());
-		
+		/*Current time*/
 		mav.addObject("Access", this.getCurrentDate('f'));
-		mav.setViewName("step4");
+		mav.addObject("SeatInfo", gson.toJson(this.getSeat(movie)));
+		/* 상영정보 */
 		
+		mav.setViewName("step4");
 		return mav;
 	}
+
+	private ArrayList<Seat> getSeat(Movie movie) {
+		return mapper.getSeat(movie);
+	}
+
+
 
 	/* Screening Time*/
 	private ModelAndView screeningTime(Movie movie) {

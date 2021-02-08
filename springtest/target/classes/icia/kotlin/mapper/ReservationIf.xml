@@ -20,4 +20,21 @@
 		ORDER BY MVSCREEN ASC
 		]]>
 	</select>
+	
+	<select id="getSeat" resultType="icia.kotlin.beans.Seat">
+	<![CDATA[
+		SELECT IS_SEAT AS SEATNUM,
+        IS_TYPE AS SEATTYPE
+		FROM "IS" 
+		WHERE IS_SCNUMBER = #{mvScreen}
+		UNION
+		SELECT RD_SEAT AS SEATNUM,
+         RD_TYPE AS SEATTYPE
+		FROM RD WHERE RD_RVCODE 
+		 IN(SELECT RV_CODE FROM RV WHERE RV.RV_SISCNUMBER =#{mvScreen} AND
+			TO_CHAR(RV.RV_SIDATETIME, 'YYYYMMDDHH24MI') = #{mvDateTime})
+		]]>
+	</select>
+	
+	
 </mapper>
