@@ -127,41 +127,41 @@ function screening(){
 		tDiv.appendChild(tScreen);
 		
 		sTime.appendChild(tDiv);	
-// 		/* mvScreen */
-// 		let mvScreen = document.createElement('Div');
-// 		mvScreen.textContent = screeningData[index].mvScreen + "관";
-// 		time.appendChild(mvScreen);
+		/* mvScreen */
+		let mvScreen = document.createElement('Div');
+		mvScreen.textContent = screeningData[index].mvScreen + "관";
+		time.appendChild(mvScreen);
 
-// 		/* mvTime */
-// 		let mvTime = document.createElement('Div');
-// 		var sctime = screeningData[index].mvTime
-// 		mvTime.textContent = "시간 = " + sctime.substring(0, 2) + ":"
-// 				+ sctime.substring(2);
-// 		mvTime.style.cursor = "pointer";
-// 		mvTime.addEventListener('click', 
-// 				function(){divClick2(screeningData[0].mvCode, mvDate, sc);});//onClick 역할
-// 		time.appendChild(mvTime);
+		/* mvTime */
+		let mvTime = document.createElement('Div');
+		var sctime = screeningData[index].mvTime
+		mvTime.textContent = "시간 = " + sctime.substring(0, 2) + ":"
+				+ sctime.substring(2);
+		mvTime.style.cursor = "pointer";
+		mvTime.addEventListener('click', 
+				function(){divClick2(screeningData[0].mvCode, mvDate, sc);});//onClick 역할
+		time.appendChild(mvTime);
 
-// 		/* mvGrade */
-// 		let mvGrade = document.createElement('Div');
+		/* mvGrade */
+		let mvGrade = document.createElement('Div');
 
-// 		var gr = screeningData[index].mvGrade
-// 		switch (gr) {
-// 		case "W":
-// 			var grade = "전체 관람가";
-// 			break;
-// 		case "T":
-// 			var grade = "12세 관람가";
-// 			break;
-// 		case "F":
-// 			var grade = "15세 관람가";
-// 			break;
-// 		case "A":
-// 			var grade = "청소년 관람 불가";
-// 			break;
-// 		}
-// 		mvGrade.textContent = grade;
-// 		time.appendChild(mvGrade);
+		var gr = screeningData[index].mvGrade
+		switch (gr) {
+		case "W":
+			var grade = "전체 관람가";
+			break;
+		case "T":
+			var grade = "12세 관람가";
+			break;
+		case "F":
+			var grade = "15세 관람가";
+			break;
+		case "A":
+			var grade = "청소년 관람 불가";
+			break;
+		}
+		mvGrade.textContent = grade;
+		time.appendChild(mvGrade);
 		}
 	}
 </script>
