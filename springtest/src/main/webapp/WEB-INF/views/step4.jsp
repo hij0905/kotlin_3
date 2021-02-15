@@ -40,15 +40,26 @@
 				seat[seatInfo[index].seatNum-1].className = (seatInfo[index].seatType == "H")? "hall":
 					((seatInfo[index].seatType == "R")? "reserve":"repair");
 			}
-		for(index = 0; index < seat.length; index++){
-			if(seat[index].className == "able"){
-				seat[index].setAttribute("onClick", "selectSeat("+(index+1)+")");
-			}
+		
+		/*Active Seat에 Event 추가*/
+		   let rowChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		   let cnt = -1;
+		   for(index =0;index<seat.length;index++){
+		      if(seat[index].className !="hall"){
+		         cnt++;
+		         let first = rowChar.substr(parseInt(cnt/10),1);
+		            let second = (cnt%10)+1;
+		            if(seat[index].className == "able"){
+		               seat[index].setAttribute("onClick","selectSeat("+(index+1)+",'"+first+second+"')");
+		         }
+		      }
+		   }
 		}
-		/*  .able인  경우 EventListener 추가*/
+	
+	function selectSeat(sNumber,cNumber){
+	   let type = prompt("성인:A | 청소년:J | 어린이:C");
+	   alert(sNumber+":"+cNumber+":"+type);
 	}
-	function selectSeat(sNumber){
-		alert(sNumber);
-	}
+
 </script>
 </html>
