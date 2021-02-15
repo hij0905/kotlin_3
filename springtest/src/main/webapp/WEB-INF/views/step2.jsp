@@ -8,7 +8,7 @@
 	<link href="/resources/css/kotlin.css" rel="stylesheet"/> 
 </head>
 <body onLoad="init()">
-	<a href="http://172.30.1.8/LoginForm" >로그인폼 이동</a><br />
+	<a href="http://172.30.1.27/LoginForm" >로그인폼 이동</a><br />
 	<P>  Now Time : ${Access} </P>
 	<section id="movieZone" style="display:flex;">
 		<div id="movieInfo"></div>

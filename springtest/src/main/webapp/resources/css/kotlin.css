@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+.movie{
+	width:  150px;
+	height: 30px;
+	margin: 5px 5px 5px 5px;
+	background-size: contain;
+}
+
+.row{
+	display: flex;
+}
+
+.able{
+	width: 4%;
+	height: 30px;
+	float: left;
+	background-color: #4374D9;
+	border: 1px solid #FFFFFF;
+	cursor: pointer;
+}
+
+.hall{
+	width: 4%;
+	height: 30px;
+	float: left;
+	background-color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	cursor: default;
+}
+
+.repair{
+	width:4%;
+	height: 30px;
+	float: left;
+	background-color: #BDBDBD;
+	border: 1px solid #FFFFFF;
+	cursor: default;
+}
+
+.reserve{
+	width:4%;
+	height: 30px;
+	float: left;
+	background-color: #FFBB00;
+	border: 1px solid #FFFFFF;
+	cursor: default;
+}
+
+
+
+
+
+
+
+
+
+
+

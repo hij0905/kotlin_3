@@ -9,7 +9,7 @@
 </head>
 <body>
 	<P> Now Time : ${Access}   </P>
-	<a href="http://172.30.1.8/LoginForm">로그인폼 이동</a>
+	<a href="http://172.30.1.27/LoginForm">로그인폼 이동</a>
 	${mList}
 	
 </body>
